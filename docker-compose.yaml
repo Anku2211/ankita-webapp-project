@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  ankita-ui-code:
+    image: ankita-web:appv$BUILD_NUMBER
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ankita-web-c1
+    ports:
+      - 2211:80
