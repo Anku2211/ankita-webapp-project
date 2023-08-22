@@ -5,6 +5,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: ankita-web-c2
+    container_name: ankita-web-c3
     ports:
-      - 2222:80
+      - 2244:80
