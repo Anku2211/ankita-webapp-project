@@ -28,7 +28,7 @@ spec:
         app: ankita-webapp
     spec:
       containers:
-      - image: ankitay22/ankita-cloud4c-app:version25
+      - image: ankitay22/ankita-cloud4c-app:latest
         name: ankita-cloud4c-app
         ports:
         - containerPort: 80
