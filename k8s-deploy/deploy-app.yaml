@@ -1,0 +1,58 @@
+# creating NS
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: ankita-jk-deploy
+spec: {}
+status: {}
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ankita-webapp
+  name: ankita-webapp
+  namespace: ankita-jk-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ankita-webapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ankita-webapp
+    spec:
+      containers:
+      - image: ankitay22/ankita-cloud4c-app:version25
+        name: ankita-cloud4c-app
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
+
+----
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ankitalb1
+  name: ankitab1
+  namespace: ankita-jk-deploy
+spec:
+  ports:
+  - name: 1234-80
+    port: 1234
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: ankita-webapp
+  type: NodePort
+status:
+  loadBalancer: {}
