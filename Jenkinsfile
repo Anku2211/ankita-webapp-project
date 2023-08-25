@@ -1,25 +1,27 @@
 pipeline {
- agent {
-  label: 'slave1-docker'
- }
- 
-stages {
-stage('testing'){
+agent {
+  label 'slave1-docker'
+}
+
+stages{
+  stage('testing'){
     agent any 
     steps {
       echo "hello world"
     }
   }
+
 }
 post {
-  always  {
-   echo 'Running every single time'
+  always {
+    echo "i am gonna run every single time"
   }
-success  {
-   echo 'Running every single success'
+  failure {
+    echo "only when something fails"
   }
-failure  {
-   echo 'Running every single failure'
+  success {
+    echo "this section will execute when everything is fine"
   }
 }
+
 }
